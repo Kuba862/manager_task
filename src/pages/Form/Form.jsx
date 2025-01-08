@@ -13,9 +13,17 @@ const FormStyle = styled.div`
     color: #333;
     text-align: center;
   }
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     list-style-type: none;
     padding: 0;
+    width: 100%;
   }
   li {
     padding: 8px 0;
@@ -25,9 +33,11 @@ const FormStyle = styled.div`
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
+}
   button {
-    width: 100%;
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -52,17 +62,19 @@ const Form = () => {
   return (
     <FormStyle>
       <h1>User List</h1>
-      <ul>
-        {users.map((user, index) => (
-          <li key={index}>{user}</li>
-        ))}
-      </ul>
-      <input
-        type="text"
-        value={newUser}
-        onChange={(e) => setNewUser(e.target.value)}
-        placeholder="Enter user name"
-      />
+      <div>
+        <ul>
+          {users.map((user, index) => (
+            <li key={index}>{user}</li>
+          ))}
+        </ul>
+        <input
+          type="text"
+          value={newUser}
+          onChange={(e) => setNewUser(e.target.value)}
+          placeholder="Enter user name"
+        />
+      </div>
       <button onClick={addUserHandler}>Add User</button>
     </FormStyle>
   );

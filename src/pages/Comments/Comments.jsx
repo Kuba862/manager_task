@@ -21,6 +21,11 @@ const CommentsStyle = styled.div`
   li {
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
+    * {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    }
   }
   div {
     width: 100%;
@@ -55,11 +60,10 @@ const Comments = () => {
 
   const handleAddComment = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${process.env.REACT_APP_API_URL}/api/test/post-comment`,
         { testContent: newComment }
       );
-      console.log('Comment added successfully:', response.data);
       fetchComments();
     } catch (err) {
       console.error('Error adding comment:', err);
